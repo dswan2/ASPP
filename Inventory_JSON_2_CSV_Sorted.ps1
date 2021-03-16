@@ -19,8 +19,12 @@ $inventory_filtered =  $inventory_sorted | Where-Object {[int32]$_.Value -gt $fi
 # Debug
 #$inventory_filtered
 
-# Let's write it out to a csv
+
+# Declare function Write-CSV
+function Write-CSV {
 Write-Host "Outputting to file $outputfile ....`n"
 $inventory_filtered | Select-Object Name,Value | Export-Csv -Path .\$outputfile -NoTypeInformation 
+}
 
-
+# Let's write it out to a csv
+Write-CSV
